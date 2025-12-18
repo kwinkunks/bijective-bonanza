@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bijective Bonanza!</title>
+    <style>
+        body { font-family: Helvetica, sans-serif; max-width: 60em; margin: auto }
+        h2 { color: gray; }
+        td { padding: 8px; }
+        table { border-collapse: collapse; break-inside: avoid; break-before:auto }
+        th { font-size: 125%; padding-bottom: 12px;}
+    </style>
+</head>
+<body>
+    <h2><span style="float: left; margin-bottom: 18px;">Bijective Bonanza!</span><span style="float: right;">Team ___________________</span></h2>
+
+    {% for question in questions %}
+    <div class="question">
+        <table width="100%" style="margin-bottom: 30px;">
+            <tr>
+                <th style="text-align:right; width:20em;">{{ question.number }}. {{ question.domain }}<br /></th>
+                <th style="width:2em;">&nbsp;</th>
+                <th style="text-align:right; width:4em;">&rarr;</th>
+                <th style="text-align:center; width:0.1em;">&rarr;</th>
+                <th style="width:2em;"></th>
+                <th style="text-align:left; width:20em">{{ question.codomain }}</th>
+            </tr>
+            {% for letter, member, coletter, comember in question.domain_and_codomain %}
+                <tr>
+                    <td style="text-align:right;"">{{ member }}</td>
+                    <td style="border: 2px solid rgb(0, 251, 63); background: rgb(236, 255, 239)"></td>
+                    <td></td>
+                    <td style="border-left: 2px solid black;"></td>
+                    <td></td>
+                    <td>{{ coletter }}. {{ comember }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+    <div style="text-align: center;">EDC Quiz  |  SVG  |  2024-11-07</div>
+</body>
+</html>
